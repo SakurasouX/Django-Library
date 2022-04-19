@@ -1,3 +1,3 @@
 # Library site
 
-Library site on Django
+library website written in django
