@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="author-info-full">
+
+    <h1>{{ author.first_name }}, {{ author.last_name }}</h1>
+    <h2>Об авторе</h2>
+
+    <img src={{ author.photo.url }} alt="" style="float: left; margin: 0 10px 10px 0;">
+    {{ author.biography }}
+
+    <div>
+        <a href="{% url 'author_update' author.id %}">Редактировать автора</a>
+        <a href="{% url 'author_delete' author.id %}">Удалить автора</a>
+    </div>
+
+    <div class="author-info-full-book">
+        <h1>Произведения автора</h1>
+        {% for book in author.book_set.all %}
+        <div>
+            <a href="{% url 'book-detail' book.pk %}">{{ book }}</a>
+            <p>{{ book.summary }}</p>
+        </div>
+        {% endfor%}
+    </div>
+
+</div>
+
+
+{% endblock %}

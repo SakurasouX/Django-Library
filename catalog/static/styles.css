@@ -1,0 +1,202 @@
+html {
+    box-sizing: border-box;
+    font-family: system-ui,-apple-system,"Segoe UI",
+    Roboto,"Helvetica Neue",
+    Arial,"Noto Sans",
+    "Liberation Sans",sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+html, body, ul, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+/* The sidebar menu */
+ .sidebar-nav {
+    width: 280px; /* Set the width of the sidebar */
+    height: 100%;
+    top: 0;
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    background-color: #f8f9fa;
+    box-shadow: 4px 0px 12px 0px rgba(34, 60, 80, 0.2);
+}
+
+/* The navigation menu links */
+.sidebar-nav a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #212529;
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 8px 16px 8px 16px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar-nav a:hover {
+    background-color: #0d6efd;
+    border-radius: 5px;
+    color:#f8f9fa;
+}
+
+.sidebar-nav-line {
+    margin: 20px 10px;
+    opacity: 0.25;
+    size: 1px;
+}
+
+.sidebar-nav-main {
+    margin-top: 20px;
+}
+
+.sidebar-nav-main a {
+    padding-left: 50px;
+    right: 0px;
+    background-image: url('image/home_icon_black.png');
+    background-repeat: no-repeat;
+    background-position: 12.5px;
+    background-size: 25px;
+}
+
+.sidebar-nav-main a:hover {
+    padding-left: 50px;
+    right: 0px;
+    background-image: url('image/home_icon_white.png');
+    background-repeat: no-repeat;
+    background-position: 12.5px;
+    background-size: 25px;
+}
+
+/* Style page content */
+.main-content {
+    margin-left: 300px; /* Same width as the sidebar + left position in px */
+    margin-top: 20px;
+}
+
+.main-ul {
+    list-style-type: none;
+}
+
+/* Style book list */
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book-box-outer {
+    border: 1px solid lightgray;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    height: 520px;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.book-box-wrapper {
+    width: 300px;
+    height: 450px;
+    margin-top: 20px;
+}
+
+.book-name {
+    padding: 10px;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+.book-name a {
+    text-decoration: none;
+    color: black;
+}
+
+.pagination {
+    margin: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Style author list */
+
+.author-container {
+    display: block;
+}
+
+.author-box {
+    width: 100% - 10px;
+    height: 120px;
+    border: 1px dotted lightgray;
+    margin: 10px;
+    display: flex;
+}
+
+.author-photo {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.author-info-right {
+    margin-top: 10px;
+}
+
+.author-info-right a {
+    text-decoration: none;
+    color: #0d6efd;
+}
+
+
+/* Style author detail page */
+
+.author-info-full {
+    margin-right: 20px;
+    padding: 20px;
+}
+
+.author-info-full-book {
+    margin-top: 50px;
+}
+
+
+/* Style favorite page */
+
+.favorite {
+    margin: 20px;
+}
+
+.favorite ul {
+    list-style-type: none;
+}
+
+.favorite a {
+    text-decoration: none;
+    color: #0d6efd;
+}
+
+.favorite-info {
+    margin-top: 20px;
+}
+
+
+/* Style Authentication page */
+
+.authentication-menu {
+    margin: 0 auto;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.authentication-table {
+    width: 200px;
+    margin: auto;
+}

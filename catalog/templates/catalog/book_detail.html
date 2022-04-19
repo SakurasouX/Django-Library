@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>{{ book.title }}</h1>
+
+{% if book.image %}
+    <div class="book-box-wrapper" style="background-image: url({{ book.image.url }}); background-size: cover;"><a href="{{ book.get_absolute_url }}" style="display: block; height: 100%;" ></a></div>
+{% else %}
+    <div class="book-box-wrapper"></div>
+{% endif %}
+
+<p><strong>Автор:</strong> <a href="{% url 'author-detail' book.author.pk %}">{{ book.author }}</a></p>
+<p><strong>Описание книги:</strong> {{ book.summary }}</p>
+<p><strong>Язык:</strong> {{ book.language }}</p>
+<p><strong>Жарн:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+<p><strong>ISBN:</strong> {{ book.isbn }}</p>
+<p><a href="{% url 'book_update' book.id %}">Редактировать</a></p>
+<p><a href="{% url 'book_delete' book.id %}">Удалить</a></p>
+
+{% endblock %}
+

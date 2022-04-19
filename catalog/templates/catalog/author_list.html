@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Список писателей</h1>
+
+<div class="author-container">
+    {% if author_list %}
+            {% for author in author_list %}
+                <div class="author-box">
+                    {% if author.photo %}
+                        <img class="author-photo" src="{{ author.photo.url }}">
+                    {% else %}
+                        <img class="author-photo "src="../../static/image/no_photo.png">
+                    {% endif%}
+                    <div class="author-info-right">
+                        <h1 style="font-size: 18px;">{{ author.first_name }}, {{ author.last_name }}</h1>
+                        <div>{{ author.short_biography }}... <a href="{{ author.get_absolute_url }}">Подробнее</a></div>
+                    </div>
+                </div>
+            {% endfor %}
+    {% else %}
+        <p>no authors</p>
+    {% endif %}
+</div>
+
+{% endblock %}

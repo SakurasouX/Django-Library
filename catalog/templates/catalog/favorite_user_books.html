@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="favorite">
+
+    <h1>Мои избранные книги</h1>
+
+    {% if book_list %}
+        <ul>
+            {% for book in book_list %}
+            <div class="favorite-info">
+                <li><a href="{% url 'book-detail' book.pk %}">{{ book.title }}</a></li>
+                <p>{{ book.summary }}</p>
+            </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Empty</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

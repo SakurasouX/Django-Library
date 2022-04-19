@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    {% block title %} <title>Library Home</title> {% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Добавление дополнительного статического CSS файла -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+
+    {% block sidebar %}
+    <ul class="sidebar-nav">
+        <div class="sidebar-nav-main"><a href="{% url 'index' %}">Главная</a></div>
+        <hr class="sidebar-nav-line">
+        <li><a href="{% url 'books' %}">Книги</a></li>
+        <li><a href="{% url 'authors' %}">Авторы</a></li>
+        <hr class="sidebar-nav-line">
+        <li><a href="{% url 'my_favorites' %}">Избранные</a></li>
+        <hr class="sidebar-nav-line">
+        <li><a href="{% url 'book_create' %}">Добавить книгу</a></li>
+        <li><a href="{% url 'author_create' %}">Добавить автора</a></li>
+        <hr class="sidebar-nav-line">
+        {% if user.is_authenticated %}
+        <li><a href="">User: {{ user.get_username }}</a></li>
+        <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+        {% endif %}
+    </ul>
+
+    {% endblock %}
+
+    <div class="main-content">
+        {% block content %}{% endblock %}
+        {% block pagination %}
+        {% if is_paginated %}
+            <div class="pagination">
+                <span class="page-links">
+                    {% if page_obj.has_previous %}
+                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">назад</a>
+                    {% endif %}
+                    <span class="page-current">
+                        Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">вперед</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+        {% endblock %} 
+    </div>
+
+</body>
+
+<script type="text/javascript" src="{% static 'js/script.js' %}" ></script>
+
+</html>

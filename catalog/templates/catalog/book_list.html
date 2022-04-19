@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+{% block content %}
+
+    <div class="book-container">
+        {% if book_list %}
+            {% for book in book_list %}
+            <div class="book-box-outer">
+                {% if book.image %}
+                    <div class="book-box-wrapper" style="background-image: url({{ book.image.url }}); background-size: cover;"><a href="{{ book.get_absolute_url }}" style="display: block; height: 100%;" ></a></div>
+                    <div class="book-name">{{ book.title }}</div>
+                {% else %}
+                    <div class="book-box-wrapper"></div>
+                    <div class="book-name"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% else %}
+        <p>There are no books in the library.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

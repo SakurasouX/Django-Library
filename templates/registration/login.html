@@ -1,0 +1,45 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="authentication-menu">
+    
+    {% if form.errors %}
+        <p>Ваше имя пользователя и пароль не совпали. Пожалуйста, попробуйте еще раз.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authentificated %}
+            <p>Ваша учетная запись не имеет доступа к этой странице. Чтобы продолжить,
+                пожалуйста, войдите в систему с учетной записью, у которой есть доступ.</p>
+        {% else %}
+            <p>Войдите в свой аккаунт, что бы увидеть эту страницу</p>
+        {% endif %}
+    {% endif %}
+
+    <form  method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <table class="authentication-table">
+        <tr>
+            <td>Логин:</td>
+            <td>{{ form.username }}</td>
+        </tr>
+
+        <tr>
+            <td>Пароль:</td>
+            <td>{{ form.password }}</td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Войти" style="margin-top: 20px;">
+    <input type="hidden" name="next" value="{{ next }}">
+
+    </form>
+
+    {# Assumes you setup the password_reset view in your URLconf #}
+    <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+
+</div>
+
+{% endblock %}
